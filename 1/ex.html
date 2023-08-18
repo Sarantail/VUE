@@ -1,0 +1,57 @@
+<!-- Создать кнопку "Перевернуть". При клике на кнопку текст кнопки, должен перевернуться и отобразиться в обратном порядке.
+есть список элементов. Пользователь может добавлять новые элементы списка с текстом “Новый элемент списка” нажав на кнопку "Добавить". -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .btn {
+            gap: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Список элементов</h1>
+        <ul class="elements">
+            <li @click="deleteEl(index)" v-for="(element,index) in elements">
+                {{element}}-{{index}}
+            </li>
+        </ul>
+        <button class="btn" @click="changeButton">{{message}}</button>
+        <button class="btn" @click="addElement">{{addBut}}</button>
+    </div>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Перевернуть',
+                addBut: 'Добавить новый элемент',
+                elements: [],
+                element: 'Новый элемент',
+            },
+            methods: {
+                changeButton() {
+                    this.message = this.message.split('').reverse().join('');
+                },
+                addElement() {
+                    this.id += this.id;
+                    this.elements.push(this.element);
+                },
+                deleteEl(index) {
+                    this.elements.splice(index, 1);
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
