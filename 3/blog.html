@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="main__block center transparent">
+            <header class="header">
+                <div class="header__left">
+                    <img src="img/Logo.svg" alt="Logo" />
+                    <h3>Interno</h3>
+                </div>
+                <nav class="header__right">
+                    <a href="index.html">Home</a>
+                    <a href="Project">Project</a>
+                    <a href="blog.html">Blog</a>
+                </nav>
+            </header>
+            <div class="starter">
+                <img class="starter__blog__img" src="img/Blog_promo.svg" alt="Logo" />
+            </div>
+            <div class="projects__header shift__up">
+                <p class="projects__header__header">Articles & News</p>
+                <div class="breadcrumb">
+                    <div class="breadcrumb__box-link">
+                        <a class="breadcrumb__link" href="index.html">Home</a>
+                    </div>
+                    <div class="breadcrumb__box-link">
+                        <a class="breadcrumb__link" href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="post__header">Latest Post</div>
+            <div class="post">
+                <img src="img/Blog_post.svg" alt="img/Blog_post.svg" class="post__img" />
+                <div class="post__content">
+                    <p class="post__content__header">
+                        Low Cost Latest Invented Interior Designing Ideas
+                    </p>
+                    <p class="post__content__first">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+                        alias corporis debitis voluptas doloribus adipisci neque nobis
+                        saepe velit eligendi pariatur, mollitia et rerum animi
+                        repudiandae nostrum. Eligendi, earum reprehenderit.
+                    </p>
+                    <!--  -->
+                    <div class="blog__news__content">
+                        <p class="small__text">22 December,2022</p>
+                        <div class="project__item__btn">
+                            <svg width="10" height="20" viewBox="0 0 10 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.00012 19L9.00012 10L1.00012 1" stroke="#292F36" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+            <div class="projects">
+                <!-- News -->
+                <div class="post__header">Articles & News</div>
+                <div class="news__view">
+                    <div v-for="item in items" :key="item.id" class="news__item">
+                        <img class="news__item__img" :src="item.img" alt="" />
+                        <p class="news__item__text">{{item.item_text}}</p>
+                        <div class="news__item__content">
+                            <p class="small__text">{{item.item_datedate}}</p>
+                            <a :href="item.item_href" class="project__item__btn">
+                                <svg width="10" height="20" viewBox="0 0 10 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.00012 19L9.00012 10L1.00012 1" stroke="#292F36" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                        <a :href="item.section_href" class="news__section">{{item.section_name}}</a>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="news__buttons">
+                    <button v-for="item in buttons" :key="item.id" @click="showPage(item.id)"
+                        class="project__item__btn">
+                        {{item.number}}
+                    </button>
+                </div>
+                <!--  -->
+            </div>
+            <footer class="footer">
+                <div class="footer__logo__block">
+                    <div class="footer__logo">
+                        <img src="img/Logo.svg" alt="Logo" />
+                        <h3>Interno</h3>
+                    </div>
+                    <p class="footer__logo__text">
+                        It is a long established fact that a reader will be distracted
+                        lookings.
+                    </p>
+                    <div class="footer__logo__twitter">
+                        <a href="">
+                            <img src="img/twitter.svg" alt="Logo" />
+                        </a>
+                        <a href="">
+                            <img src="img/in.svg" alt="Logo" />
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__pages">
+                    <h3>Pages</h3>
+                    <nav class="footer__pages__menu">
+                        <a href="index.html">Home</a>
+                        <a href="Project">Project</a>
+                        <a href="blog.html">Blog</a>
+                    </nav>
+                </div>
+                <div class="footer__contact">
+                    <h3>Contacts</h3>
+                    <p class="address">
+                        55 East Birchwood Ave. Brooklyn, New York 11201
+                    </p>
+                    <p class="email">contact@interno.com</p>
+                    <p class="tel">(123) 456 - 7890</p>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="news_items.js"></script>
+    <script>
+        const json_data = JSON.parse(news_items);
+        new Vue({
+            el: '#app',
+            data: {
+                buttons: [
+                    {
+                        id: 0,
+                        number: '01',
+                    },
+                    {
+                        id: 1,
+                        number: '02',
+                    },
+                ],
+                items: [
+                    {
+                        id: 0,
+                        img: 'img/News1.svg',
+                        section_name: 'Kitchen Design',
+                        section_href: '',
+                        item_text: 'Let’s Get Solution For Building Construction Work',
+                        item_date: '26 December,2022',
+                        item_href: 'blog_details.html',
+                    },
+                    {
+                        id: 1,
+                        img: 'img/News2.svg',
+                        section_name: 'Living Design',
+                        section_href: '',
+                        item_text: 'Low Cost Latest Invented Interior Designing Ideas',
+                        item_date: '22 December,2022',
+                        item_href: 'blog_details.html',
+                    },
+                    {
+                        id: 2,
+                        img: 'img/News3.svg',
+                        section_name: 'Interior Design',
+                        section_href: '',
+                        item_text: 'Best For Any Office & Business Interior Solution',
+                        item_date: '25 December,2022',
+                        item_href: 'blog_details.html',
+                    },
+                ],
+            },
+            methods: {
+                showPage(id) {
+                    for (let i = 0; i < 3; i++) {
+                        this.items[i].img = json_data[id * 3 + i].img;
+                        this.items[i].section_name = json_data[id * 3 + i].section_name;
+                        this.items[i].section_href = json_data[id * 3 + i].section_href;
+                        this.items[i].item_text = json_data[id * 3 + i].item_text;
+                        this.items[i].item_date = json_data[id * 3 + i].item_date;
+                        this.items[i].item_href = json_data[id * 3 + i].item_href;
+                    }
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="main__block center transparent">
+            <header class="header">
+                <div class="header__left">
+                    <img src="img/Logo.svg" alt="Logo" />
+                    <h3>Interno</h3>
+                </div>
+                <nav class="header__right">
+                    <a href="index.html">Home</a>
+                    <a href="Project">Project</a>
+                    <a href="blog.html">Blog</a>
+                </nav>
+            </header>
+            <div class="starter">
+                <img class="starter__blog__img" src="img/Blog_details_promo.svg" alt="Logo" />
+            </div>
+            <!--  -->
+            <div class="blog__details">
+                <div class="blog__details__main">
+                    <!-- components -->
+                    <component :is="changeTab"></component>
+                </div>
+                <div class="tags">
+                    <p class="tags__heading">Tags</p>
+                    <button class="tag" @click="currentTab = btn" v-for="btn in nameBtns" :key="btn.id">
+                        {{btn}}
+                    </button>
+                </div>
+            </div>
+            <!--  -->
+            <footer class="footer">
+                <div class="footer__logo__block">
+                    <div class="footer__logo">
+                        <img src="img/Logo.svg" alt="Logo" />
+                        <h3>Interno</h3>
+                    </div>
+                    <p class="footer__logo__text">
+                        It is a long established fact that a reader will be distracted
+                        lookings.
+                    </p>
+                    <div class="footer__logo__twitter">
+                        <a href="">
+                            <img src="img/twitter.svg" alt="Logo" />
+                        </a>
+                        <a href="">
+                            <img src="img/in.svg" alt="Logo" />
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__pages">
+                    <h3>Pages</h3>
+                    <nav class="footer__pages__menu">
+                        <a href="index.html">Home</a>
+                        <a href="Project">Project</a>
+                        <a href="blog.html">Blog</a>
+                    </nav>
+                </div>
+                <div class="footer__contact">
+                    <h3>Contacts</h3>
+                    <p class="address">
+                        55 East Birchwood Ave. Brooklyn, New York 11201
+                    </p>
+                    <p class="email">contact@interno.com</p>
+                    <p class="tel">(123) 456 - 7890</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="blog_details.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nameBtns: [
+                    'Kitchen',
+                    'Bedroom',
+                    'Building',
+                    'Architecture',
+                    'Kitchen planning',
+                ],
+                currentTab: 'Kitchen',
+            },
+            computed: {
+                changeTab() {
+                    return this.currentTab.replace(' ', '_');
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
